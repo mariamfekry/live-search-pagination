@@ -1,0 +1,67 @@
+////////////////// course table/////////////////////////////////////
+CREATE TABLE `course` (
+ `course_id` int(30) NOT NULL AUTO_INCREMENT,
+ `course_name` varchar(255) NOT NULL,
+ `course_des` varchar(255) NOT NULL,
+ `dep_id` int(30) NOT NULL,
+ `prof_id` int(30) NOT NULL,
+ PRIMARY KEY (`course_id`),
+ KEY `dep_id` (`dep_id`),
+ KEY `prof_id` (`prof_id`),
+ CONSTRAINT `course_ibfk_1` FOREIGN KEY (`dep_id`) REFERENCES `departments` (`dep_id`) ON DELETE CASCADE,
+ CONSTRAINT `course_ibfk_2` FOREIGN KEY (`prof_id`) REFERENCES `professor` (`prof_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1
+
+////////////////// departments table/////////////////////////////////////
+
+
+CREATE TABLE `departments` (
+ `dep_id` int(30) NOT NULL AUTO_INCREMENT,
+ `dep_name` varchar(255) NOT NULL,
+ PRIMARY KEY (`dep_id`),
+ UNIQUE KEY `dep_name` (`dep_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1
+
+////////////////// professor table/////////////////////////////////////
+
+CREATE TABLE `professor` (
+ `prof_id` int(30) NOT NULL AUTO_INCREMENT,
+ `prof_name` varchar(255) NOT NULL,
+ PRIMARY KEY (`prof_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1
+
+////////////////////////insertions///////////////////////////////////
+
+INSERT INTO `professor`(`prof_id`, `prof_name`) VALUES (NULL,"Hany"),
+(NULL,"Mervat"),
+(NULL,"Hicham"),
+(NULL,"Ahmed"),
+(NULL,"Marwa"),
+(NULL,"mahmoud"),
+(NULL,"laila"),
+(NULL,"khaled"),
+(NULL,"bahaa"),
+(NULL,"ali"),
+(NULL,"Maged");
+
+INSERT INTO `departments`(`dep_id`, `dep_name`) VALUES (NULL,"Computer science"),
+(NULL,"science"),
+(NULL,"Applied maths"),
+(NULL,"languages"),
+(NULL,"industrial"),
+(NULL,"Architecture"),
+(NULL,"biomedical"),
+(NULL,"mechanical engineering"),
+(NULL,"Chemistry"),
+(NULL,"nanotechnology");
+
+INSERT INTO `course`(`course_id`, `course_name`, `course_des`, `dep_id`, `prof_id`) VALUES (null,"maths4","faculty of engineering","2","5"),
+(NULL , "maths2", "faculty of engineering", "1", "4"),
+(NULL , "Engineering drawing", "faculty of engineering", "3", "5"),
+(NULL , "discrete", "faculty of computer science", "2", "5"),
+(NULL , "Graphics", "faculty of fine arts", "5", "6"),
+(NULL , "Human rights", "faculty of education", "7", "9"),
+(NULL , "Accounting", "faculty of commerce", "3", "3"),
+(NULL , "economics", "faculty of commerce", "10", "1"),
+(NULL , "project management", "faculty of engineering", "9", "8"),
+(NULL , "ethics and law", "faculty of engineering", "4", "6");
